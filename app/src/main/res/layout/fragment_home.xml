@@ -12,6 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -23,9 +25,9 @@
                 android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/logo2"></ImageView>
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -40,8 +42,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="150dp"
                 android:src="@drawable/play_button"
-                android:visibility="visible"
-                ></ImageView>
+                android:visibility="visible"></ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,11 +58,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:alignmentMode="alignMargins"
+            android:backgroundTint="#f4f4f4"
             android:columnCount="3"
             android:columnOrderPreserved="false"
             android:hapticFeedbackEnabled="true"
-            android:rowCount="1"
-            android:backgroundTint="#f4f4f4">
+            android:rowCount="1">
 
 
             <androidx.cardview.widget.CardView
@@ -73,9 +74,8 @@
                 android:layout_margin="0dp"
                 android:layout_marginLeft="5dp"
                 android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
                 android:outlineSpotShadowColor="#f4f4f4"
-                >
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,9 +109,8 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
                 android:outlineSpotShadowColor="#f4f4f4"
-                >
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -145,9 +144,8 @@
                 android:layout_margin="0dp"
                 android:layout_marginRight="5dp"
                 android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
                 android:outlineSpotShadowColor="#f4f4f4"
-                >
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

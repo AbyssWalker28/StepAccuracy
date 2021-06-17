@@ -12,16 +12,8 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="it.unimib.stephaccuracy.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
         android:id="@+id/navigation_settings"
-        android:name="it.unimib.stephaccuracy.ui.settings.SettingsFragment"
+        android:name="it.unimib.stephaccuracy.ui.Settings.SettingsFragment"
         android:label="@string/title_settings"
-        tools:layout="@xml/root_preferences" /><![CDATA[/>
-
-    ]]>
+        tools:layout="@layout/fragment_settings" />
 </navigation>
