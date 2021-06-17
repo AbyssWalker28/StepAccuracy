@@ -97,6 +97,7 @@ public class simplePedometer_1_activity extends AppCompatActivity {
             time = sharedPref.getInt("time_pedometer_1", 0);
             distance = sharedPref.getFloat("distance_pedometer_1",0);
             total_step = sharedPref.getInt("total_daily_step", 9000);
+            Progressbar.setMax(total_step);
             goalStep.setText(total_step + "");
             simplePedometer_1.setSTEP(step);
             //mSensorValuesTextView.setText(prev_step + "");

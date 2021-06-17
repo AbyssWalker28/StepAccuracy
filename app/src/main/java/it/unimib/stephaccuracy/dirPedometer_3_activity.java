@@ -90,6 +90,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
             Progressbar = findViewById(R.id.progressBar);
             goalStep = findViewById(R.id.goal_step);
 
+
             SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
 
@@ -99,6 +100,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                 time = sharedPref.getInt("time_pedometer_3", 0);
                 distance = sharedPref.getFloat("distance_pedometer_3",0);
                 total_step = sharedPref.getInt("total_daily_step", 9000);
+                Progressbar.setMax(total_step);
                 goalStep.setText(total_step + "");
                 dirPedometer_3.setSTEP(step);
                 //mSensorValuesTextView.setText(prev_step + "");
