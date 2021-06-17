@@ -183,4 +183,5 @@ public class simplePedometer_1_activity extends AppCompatActivity {
         t.start();
     }
 
+
 }
