@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StephAccuracy</string>
+    <string name="selection">Scegli un algoritmo di un pedometro</string>
+    <string name="buttonPed1">Algoritmo 1</string>
+    <string name="buttonPed2">Algoritmo 2</string>
+    <string name="buttonPed3">Algoritmo 3</string>
+    <string name="pedometer_page_1">Simple Pedometer</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Impostazioni</string>
+    <string name="show_step">passi:</string>
+    <string name="buttonPedAll">Tutti gli algoritmi</string>
+</resources>
