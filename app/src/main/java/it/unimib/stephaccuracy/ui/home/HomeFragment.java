@@ -1,12 +1,18 @@
 package it.unimib.stephaccuracy.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -45,8 +51,19 @@ public class HomeFragment extends Fragment {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent opengpsPedometerActivity = new Intent(getActivity(), gpsPedometer_2_activity.class);
-                startActivity(opengpsPedometerActivity);
+                //if(isLocationEnabled(getContext())) {
+                    Log.d("prova","Ci siamo");
+                    Intent opengpsPedometerActivity = new Intent(getActivity(), gpsPedometer_2_activity.class);
+                    startActivity(opengpsPedometerActivity);
+                /*}
+                else{
+                    Context context2 = getContext();
+                    CharSequence text = "Posizione disattiva, Attivala prima di procedere con questo algoritmo";
+                    int duration = Toast.LENGTH_LONG;
+                    Toast toast = Toast.makeText(context2, text, duration);
+                    toast.show();
+                }*/
+
             }
         });
 
@@ -70,6 +87,19 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+    /*public static Boolean isLocationEnabled(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            // This is a new method provided in API 28
+            LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            return lm.isLocationEnabled();
+        } else {
+            // This was deprecated in API 28
+            int mode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE,
+                    Settings.Secure.LOCATION_MODE_OFF);
+            return (mode != Settings.Secure.LOCATION_MODE_OFF);
+        }
+    }*/
 
     @Override
     public void onDestroyView() {

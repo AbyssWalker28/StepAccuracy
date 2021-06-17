@@ -109,7 +109,7 @@ public class simplePedometer_1_activity extends AppCompatActivity {
 
         if(sharedPref.contains("step_dataset_1")){
             accuracy = findViewById(R.id.accuracy2);
-            float accuracy_perc = sharedPref.getInt("step_dataset_2", 0);
+            float accuracy_perc = sharedPref.getInt("step_dataset_1", 0);
             accuracy_perc = (((accuracy_perc * 100) / 500) - 100);
             accuracy.setText((100 - accuracy_perc) + "%");
         }

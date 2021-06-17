@@ -19,10 +19,12 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.LocationRequest;
 
+import java.util.List;
+
 public class SensorServiceGPS extends Service implements LocationListener {
 
     private static final String TAG = "SensorServiceGPS";
-    private Location startLocation;
+    private Location startLocation = null;
     private LocationManager locationManager;
 
     @Override
@@ -38,10 +40,12 @@ public class SensorServiceGPS extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Intent intent2 = new Intent();
-        intent2.setAction("it.unimib.stephaccuracy");
-        intent2.putExtra("gps", startLocation.getLatitude() + "," + startLocation.getLongitude());
-        sendBroadcast(intent2);
+        if(startLocation != null){
+            Intent intent2 = new Intent();
+            intent2.setAction("it.unimib.stephaccuracy");
+            intent2.putExtra("gps", startLocation.getLatitude() + "," + startLocation.getLongitude());
+            sendBroadcast(intent2);
+        }
         return START_STICKY;
     }
 

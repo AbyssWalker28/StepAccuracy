@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             simplePedometer_1.setSTEP(0);
             dirPedometer_3.setSTEP(0);
 
+            /*Log.d("prova", step_calculated_1 + "");
+            Log.d("prova", step_calculated_3 + "");*/
+
             editor.putInt("step_dataset_1", step_calculated_1);
             editor.putInt("step_dataset_3", step_calculated_3);
             editor.apply();
