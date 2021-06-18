@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.Date;
 
 public class simplePedometer_1_activity extends AppCompatActivity {
@@ -56,11 +58,13 @@ public class simplePedometer_1_activity extends AppCompatActivity {
                     goal = true;
                     viewProgress.setText("100%");
                     Progressbar.setProgress(step);
-                    Context context2 = getApplicationContext();
+
+                    Snackbar.make(findViewById(android.R.id.content), "Hai raggiunto il tuo obbiettivo giornaliero!!", Snackbar.LENGTH_LONG).show();
+                    /*Context context2 = getApplicationContext();
                     CharSequence text = "Hai raggiunto il tuo obbiettivo giornaliero!!";
                     int duration = Toast.LENGTH_LONG;
                     Toast toast = Toast.makeText(context2, text, duration);
-                    toast.show();
+                    toast.show();*/
                 }
                 saveStep();
             }

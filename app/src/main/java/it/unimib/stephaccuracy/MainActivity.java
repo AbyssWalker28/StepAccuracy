@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.Date;
 
 import it.unimib.stephaccuracy.databinding.ActivityMainBinding;
+import it.unimib.stephaccuracy.repository.pedometer_repository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,26 +52,8 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
-        //lettura da file del dataset
-        /*if(savedInstanceState == null) {
-            InputStream inputStream = getResources().openRawResource(R.raw.steps);
-            data dt = new data();
-            dt.read_data(inputStream);
-            for (int i = 0; i < dt.getSize(); i++) {
-                Log.d(TAG, "x: " + Float.toString(dt.getX().get(i)) + "   y: " + Float.toString(dt.getY().get(i)) + "   z: " + Float.toString(dt.getZ().get(i)) + "   i: " + i);
-            }
-            step_calculated_1 = dt.track_step_ped_1();     //simplePedometer dataset check
-            step_calculated_2 = dt.track_step_ped_3();     //dirPedometer dataset check
-            simplePedometer_1.setSTEP(0);
-            dirPedometer_3.setSTEP(0);
-            Log.d(TAG, "pedometer1_dataset = " + step_calculated_1);
-            Log.d(TAG, "pedometer3_dataset = " + step_calculated_2);
-        }
-        else{
-            Log.d("saveInstanceState", savedInstanceState.getInt("pedometer1_dataset") + "");
-            Log.d("saveInstanceState", savedInstanceState.getInt("pedometer3_dataset") + "");
-        }*/
+        //pedometer_repository p = new pedometer_repository(getApplication());
+        //p.push("ciao", 1, 2, 3);
 
 
         SharedPreferences sharedPref = getSharedPreferences("save_step_shared_preferences", Context.MODE_PRIVATE);

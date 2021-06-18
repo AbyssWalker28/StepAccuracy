@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "503734257332",
+    "project_id": "stepaccuracy",
+    "storage_bucket": "stepaccuracy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503734257332:android:6b64c55047c721a6c9b9e1",
+        "android_client_info": {
+          "package_name": "it.unimib.stephaccuracy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503734257332-op3601hf0cra1q8gpcpenfh43ihhu2oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8xbEY1v7VKNIn4QuoexaZr2ZfoMcKaAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503734257332-op3601hf0cra1q8gpcpenfh43ihhu2oe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

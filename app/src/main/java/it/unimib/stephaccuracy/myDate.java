@@ -15,7 +15,7 @@ public class myDate{
     public static String dateConvert(){
         Date d = new Date();
         String temp[] = d.toString().split(" ");
-        String data = temp[2] + "/" + temp[1] + "/" + temp[5];
+        String data = temp[2] + "-" + temp[1] + "-" + temp[5];
         return data;
     }
 
