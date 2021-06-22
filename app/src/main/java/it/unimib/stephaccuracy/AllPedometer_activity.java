@@ -23,6 +23,7 @@ public class AllPedometer_activity extends AppCompatActivity {
     int step_ped_1 = 0;
     int step_ped_2 = 0;
     int step_ped_3 = 0;
+
     int db_step_1 = 0;
     int db_step_2 = 0;
     int db_step_3 = 0;

@@ -52,10 +52,6 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        //pedometer_repository p = new pedometer_repository(getApplication());
-        //p.push("ciao", 1, 2, 3);
-
-
         SharedPreferences sharedPref = getSharedPreferences("save_step_shared_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         if(!sharedPref.contains("step_dataset_1") && !sharedPref.contains("step_dataset_3") ){
@@ -70,18 +66,17 @@ public class MainActivity extends AppCompatActivity {
             simplePedometer_1.setSTEP(0);
             dirPedometer_3.setSTEP(0);
 
-            /*Log.d("prova", step_calculated_1 + "");
-            Log.d("prova", step_calculated_3 + "");*/
+            Log.d("prova", step_calculated_1 + "");
+            Log.d("prova", step_calculated_3 + "");
 
             editor.putInt("step_dataset_1", step_calculated_1);
             editor.putInt("step_dataset_3", step_calculated_3);
             editor.apply();
         }
         //SISTEMARE
-        if(!sharedPref.contains("date")){
-            Date date = new Date(System.currentTimeMillis());
-            long millis = date.getTime();
-            editor.putLong("date", millis);
+        if(!sharedPref.contains("date_pedometer") || !(sharedPref.getString("date_pedometer", "").equals(myDate.dateConvert()))){
+            editor.putString("date_pedometer", myDate.dateConvert());
+            editor.apply();
         }
 
 

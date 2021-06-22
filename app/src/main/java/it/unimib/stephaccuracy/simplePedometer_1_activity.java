@@ -30,6 +30,7 @@ public class simplePedometer_1_activity extends AppCompatActivity {
     private boolean timer = false;
     private boolean goal = false;
     private String date;
+    private String main_date = "";
 
     public class SensorsValuesBroadcastReceiver extends BroadcastReceiver {
         String receiver = "";
@@ -95,8 +96,9 @@ public class simplePedometer_1_activity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        date = myDate.dateConvert();
-        if(sharedPref.contains("step_pedometer_1") && date.equals(sharedPref.getString("date_pedometer", ""))){
+        main_date = sharedPref.getString("date_pedometer", "");
+        date = sharedPref.getString("date_pedometer_1", "");
+        if(sharedPref.contains("step_pedometer_1") && main_date.equals(date)){
             step = sharedPref.getInt("step_pedometer_1", 0);
             time = sharedPref.getInt("time_pedometer_1", 0);
             distance = sharedPref.getFloat("distance_pedometer_1",0);
@@ -107,6 +109,8 @@ public class simplePedometer_1_activity extends AppCompatActivity {
             //mSensorValuesTextView.setText(prev_step + "");
         }
         else {
+            editor.putString("date_pedometer_1", main_date);
+            editor.apply();
             simplePedometer_1.setSTEP(0);
             total_step = sharedPref.getInt("total_daily_step", 9000);
             goalStep.setText(total_step + "");
@@ -151,7 +155,7 @@ public class simplePedometer_1_activity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("step_pedometer_1", step);
         editor.putFloat("distance_pedometer_1", distance);
-        editor.putString("date_pedometer", date);
+        //editor.putString("date_pedometer", date);
         editor.apply();
     }
 
