@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.activity;
+package it.unimib.stepaccuracy.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,10 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.math.BigDecimal;
 
-import it.unimib.stephaccuracy.R;
-import it.unimib.stephaccuracy.constants;
-import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
-import it.unimib.stephaccuracy.sensor.SensorServiceAcc;
+import it.unimib.stepaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stepaccuracy.sensor.SensorServiceAcc;
+import it.unimib.stepaccuracy.R;
+import it.unimib.stepaccuracy.constants;
 
 public class dirPedometer_3_activity extends AppCompatActivity {
 

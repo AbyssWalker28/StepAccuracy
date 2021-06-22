@@ -1,6 +1,6 @@
-package it.unimib.stephaccuracy.pedometer;
+package it.unimib.stepaccuracy.pedometer;
 
-import it.unimib.stephaccuracy.dataset;
+import it.unimib.stepaccuracy.dataset;
 
 public class simplePedometer_1 {
 

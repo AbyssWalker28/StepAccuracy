@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.ui.home;
+package it.unimib.stepaccuracy.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,13 +19,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import it.unimib.stephaccuracy.activity.allPedometer_activity;
-import it.unimib.stephaccuracy.R;
-import it.unimib.stephaccuracy.databinding.FragmentHomeBinding;
-import it.unimib.stephaccuracy.activity.dirPedometer_3_activity;
-import it.unimib.stephaccuracy.activity.gpsPedometer_2_activity;
-import it.unimib.stephaccuracy.activity.simplePedometer_1_activity;
-import it.unimib.stephaccuracy.viewmodels.HomeViewModel;
+import it.unimib.stepaccuracy.activity.allPedometer_activity;
+import it.unimib.stepaccuracy.viewmodels.HomeViewModel;
+import it.unimib.stepaccuracy.R;
+import it.unimib.stepaccuracy.databinding.FragmentHomeBinding;
+import it.unimib.stepaccuracy.activity.dirPedometer_3_activity;
+import it.unimib.stepaccuracy.activity.gpsPedometer_2_activity;
+import it.unimib.stepaccuracy.activity.simplePedometer_1_activity;
 
 public class HomeFragment extends Fragment {
 

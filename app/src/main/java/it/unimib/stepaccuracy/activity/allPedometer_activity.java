@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.activity;
+package it.unimib.stepaccuracy.activity;
 
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.lifecycle.Observer;
@@ -13,14 +13,14 @@ package it.unimib.stephaccuracy.activity;
         import android.widget.TextView;
         import android.widget.Toast;
 
-        import it.unimib.stephaccuracy.R;
-        import it.unimib.stephaccuracy.myDate;
-        import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
-        import it.unimib.stephaccuracy.pedometer.gpsPedometer_2;
-        import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
-        import it.unimib.stephaccuracy.sensor.SensorServiceAcc;
-        import it.unimib.stephaccuracy.sensor.SensorServiceGPS;
-        import it.unimib.stephaccuracy.viewmodels.pedometer_viewModel;
+        import it.unimib.stepaccuracy.R;
+        import it.unimib.stepaccuracy.myDate;
+        import it.unimib.stepaccuracy.pedometer.dirPedometer_3;
+        import it.unimib.stepaccuracy.pedometer.gpsPedometer_2;
+        import it.unimib.stepaccuracy.pedometer.simplePedometer_1;
+        import it.unimib.stepaccuracy.sensor.SensorServiceAcc;
+        import it.unimib.stepaccuracy.sensor.SensorServiceGPS;
+        import it.unimib.stepaccuracy.viewmodels.pedometer_viewModel;
 
 public class allPedometer_activity extends AppCompatActivity {
 

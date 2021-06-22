@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.repository;
+package it.unimib.stepaccuracy.repository;
 
 import android.app.Application;
 import android.util.Log;
@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-import it.unimib.stephaccuracy.constants;
+import it.unimib.stepaccuracy.constants;
 
 public class pedometer_repository {
     private final Application app;

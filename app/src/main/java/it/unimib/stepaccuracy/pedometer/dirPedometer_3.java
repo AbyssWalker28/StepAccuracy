@@ -1,8 +1,8 @@
-package it.unimib.stephaccuracy.pedometer;
+package it.unimib.stepaccuracy.pedometer;
 
 import android.hardware.SensorManager;
 
-import it.unimib.stephaccuracy.dataset;
+import it.unimib.stepaccuracy.dataset;
 
 public class dirPedometer_3 {
 

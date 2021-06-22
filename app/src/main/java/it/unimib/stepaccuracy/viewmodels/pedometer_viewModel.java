@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.viewmodels;
+package it.unimib.stepaccuracy.viewmodels;
 
 import android.app.Application;
 
@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import org.jetbrains.annotations.NotNull;
 
-import it.unimib.stephaccuracy.repository.pedometer_repository;
+import it.unimib.stepaccuracy.repository.pedometer_repository;
 
 public class pedometer_viewModel extends AndroidViewModel{
 

@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.pedometer;
+package it.unimib.stepaccuracy.pedometer;
 
 import android.location.Location;
 import android.location.LocationManager;

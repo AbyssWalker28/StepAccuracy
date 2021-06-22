@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stepaccuracy;
 
 import android.content.Context;
 import android.content.SharedPreferences;

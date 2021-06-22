@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.unimib.stephaccuracy">
+    package="it.unimib.stepaccuracy">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -8,48 +8,48 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/logo_app"
+        android:label="StepAccuracy"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StephAccuracy">
+        android:theme="@style/Theme.StepAccuracy">
 
         <activity
-            android:name=".activity.allPedometer_activity"
-            android:theme="@style/Theme.StephAccuracy.NoActionBar"
+            android:name="it.unimib.stepaccuracy.activity.allPedometer_activity"
+            android:theme="@style/Theme.StepAccuracy.NoActionBar"
             android:label="allPedometer">
         </activity>
 
         <activity
-            android:name=".activity.simplePedometer_1_activity"
-            android:theme="@style/Theme.StephAccuracy.NoActionBar"
+            android:name="it.unimib.stepaccuracy.activity.simplePedometer_1_activity"
+            android:theme="@style/Theme.StepAccuracy.NoActionBar"
             android:label="simplePedometer">
         </activity>
 
         <activity
-            android:name=".activity.gpsPedometer_2_activity"
-            android:theme="@style/Theme.StephAccuracy.NoActionBar"
+            android:name="it.unimib.stepaccuracy.activity.gpsPedometer_2_activity"
+            android:theme="@style/Theme.StepAccuracy.NoActionBar"
             android:label="gpsPedometer">
         </activity>
 
         <activity
-            android:name=".activity.dirPedometer_3_activity"
-            android:theme="@style/Theme.StephAccuracy.NoActionBar"
+            android:name="it.unimib.stepaccuracy.activity.dirPedometer_3_activity"
+            android:theme="@style/Theme.StepAccuracy.NoActionBar"
             android:label="dirPedometer">
         </activity>
 
         <service
-            android:name=".sensor.SensorServiceAcc">
+            android:name="it.unimib.stepaccuracy.sensor.SensorServiceAcc">
         </service>
 
         <service
-            android:name=".sensor.SensorServiceGPS">
+            android:name="it.unimib.stepaccuracy.sensor.SensorServiceGPS">
         </service>
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.StephAccuracy.NoActionBar">
+            android:name="it.unimib.stepaccuracy.MainActivity"
+            android:label="StepAccuracy"
+            android:theme="@style/Theme.StepAccuracy.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

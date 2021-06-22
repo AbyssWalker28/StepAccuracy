@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stepaccuracy;
 
 public class constants {
     public static final String PREFERENCES_FILE = "save_step_shared_preferences";

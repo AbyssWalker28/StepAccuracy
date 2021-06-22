@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.ui.Settings;
+package it.unimib.stepaccuracy.ui.Settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,9 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import it.unimib.stephaccuracy.R;
-import it.unimib.stephaccuracy.databinding.FragmentSettingsBinding;
-import it.unimib.stephaccuracy.viewmodels.SettingsViewModel;
+import it.unimib.stepaccuracy.viewmodels.SettingsViewModel;
+import it.unimib.stepaccuracy.R;
+import it.unimib.stepaccuracy.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
 

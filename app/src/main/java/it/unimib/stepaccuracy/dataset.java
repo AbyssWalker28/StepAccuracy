@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stepaccuracy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
-import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
+import it.unimib.stepaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stepaccuracy.pedometer.simplePedometer_1;
 
 public class dataset {
     private int iterator = 0;

@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stepaccuracy;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,9 +15,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.InputStream;
 
-import it.unimib.stephaccuracy.databinding.ActivityMainBinding;
-import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
-import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
+import it.unimib.stepaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stepaccuracy.pedometer.simplePedometer_1;
+import it.unimib.stepaccuracy.R;
+import it.unimib.stepaccuracy.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
