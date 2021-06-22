@@ -6,15 +6,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class data {
+import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
+
+public class dataset {
     private int iterator = 0;
     private ArrayList<Float> x;
     private ArrayList<Float> y;
     private ArrayList<Float> z;
 
-    private static final String TAG = "data";
+    private static final String TAG = "dataset";
 
-    public data() {
+    public dataset() {
         x = new ArrayList<Float>();
         y = new ArrayList<Float>();
         z = new ArrayList<Float>();

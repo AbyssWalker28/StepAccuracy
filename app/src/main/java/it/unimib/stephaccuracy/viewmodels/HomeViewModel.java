@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy.ui.home;
+package it.unimib.stephaccuracy.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

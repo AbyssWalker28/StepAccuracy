@@ -9,16 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import it.unimib.stephaccuracy.R;
 import it.unimib.stephaccuracy.databinding.FragmentSettingsBinding;
+import it.unimib.stephaccuracy.viewmodels.SettingsViewModel;
 
 public class SettingsFragment extends Fragment {
 
@@ -38,26 +36,32 @@ public class SettingsFragment extends Fragment {
         SharedPreferences sharedPref = getContext().getSharedPreferences("save_step_shared_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
+        if(sharedPref.getString("preferences_distance", "").equals("m"))
+            distance.check(R.id.radioButtonMetri);
+        else
+            distance.check(R.id.radioButtonChilometri);
+
+        if(sharedPref.getString("preferences_time", "").equals("sec"))
+            tempo.check(R.id.radioButtonSecondi);
+        else
+            tempo.check(R.id.radioButtonMinuti);
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!goal.getText().toString().equals(null)){
+                if(!goal.getText().toString().equals(""))
                     editor.putInt("total_daily_step", Integer.parseInt(goal.getText().toString()));
-                }
 
-                if(tempo.getCheckedRadioButtonId() == R.id.radioButtonSecondi){
-                    editor.putString("preferencs_time", "second");
-                }
-                else {
-                    editor.putString("preferencs_time", "minute");
-                }
+                if(tempo.getCheckedRadioButtonId() == R.id.radioButtonSecondi)
+                    editor.putString("preferences_time", "sec");
+                else
+                    editor.putString("preferences_time", "min");
 
-                if(distance.getCheckedRadioButtonId() == R.id.radioButtonMetri){
-                    editor.putString("preferencs_distance", "meter");
-                }
-                else {
-                    editor.putString("preferencs_distance", "chilometer");
-                }
+                if(distance.getCheckedRadioButtonId() == R.id.radioButtonMetri)
+                    editor.putString("preferences_distance", "m");
+                else
+                    editor.putString("preferences_distance", "km");
+
                 editor.apply();
             }
         });

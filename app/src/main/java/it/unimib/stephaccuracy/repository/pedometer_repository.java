@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-import it.unimib.stephaccuracy.Constants;
+import it.unimib.stephaccuracy.constants;
 
 public class pedometer_repository {
     private final Application app;
@@ -24,7 +24,7 @@ public class pedometer_repository {
 
     public pedometer_repository(Application app) {
         this.app = app;
-        this.db = FirebaseDatabase.getInstance(Constants.REALTIME_DATABASE).getReference();
+        this.db = FirebaseDatabase.getInstance(constants.REALTIME_DATABASE).getReference();
     }
 
     public LiveData<Boolean> push_step1(String date, int step1){

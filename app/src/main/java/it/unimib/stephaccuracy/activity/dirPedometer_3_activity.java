@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,7 +13,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Date;
+import java.math.BigDecimal;
+
+import it.unimib.stephaccuracy.R;
+import it.unimib.stephaccuracy.constants;
+import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stephaccuracy.sensor.SensorServiceAcc;
 
 public class dirPedometer_3_activity extends AppCompatActivity {
 
@@ -41,13 +45,17 @@ public class dirPedometer_3_activity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if(intent.hasExtra("acc")) {
-                    SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+                    SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
                     receiver = intent.getStringExtra("acc");
                     step = dirPedometer_3.updateStep(receiver);
 
                     mSensorValuesTextView.setText("Step: " + step);
                     distance = (float)(step * 0.65);
-                    distanceText.setText("Distance: " + (int)distance + "m");
+
+                    if(sharedPref.getString("preferences_distance", "").equals("m"))
+                        distanceText.setText("Distance: " + (int)distance + "m");
+                    else
+                        distanceText.setText("Distance: " + round(distance/1000) + "km");
 
                     float temp = (float) step / total_step;
                     step_percent = (int) (temp * 100);
@@ -92,7 +100,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
             goalStep = findViewById(R.id.goal_step);
 
 
-            SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
 
             main_date = sharedPref.getString("date_pedometer", "");
@@ -145,7 +153,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
         }
 
     private void saveStep(){
-        SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("step_pedometer_3", step);
         editor.putFloat("distance_pedometer_3", distance);
@@ -154,7 +162,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
     }
 
     private void calculate_time(){
-        SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         ImageView x = findViewById(R.id.step_icon);
         Thread t=new Thread(){
@@ -171,7 +179,12 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                                 else
                                     x.setImageResource(R.drawable.footprints_white);
                                 time++;
-                                timeText.setText("Time: " + time + " s");
+
+                                if(sharedPref.getString("preferences_time", "").equals("sec"))
+                                    timeText.setText("Time: " + time + " s");
+                                else
+                                    timeText.setText("Time: " + time/60 + " min");
+
                                 editor.putInt("time_pedometer_3", time);
                                 editor.apply();
                             }
@@ -184,5 +197,9 @@ public class dirPedometer_3_activity extends AppCompatActivity {
             }
         };
         t.start();
+    }
+
+    public static float round(float d) {
+        return BigDecimal.valueOf(d).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 }

@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.sensor;
 
 import android.app.Service;
 import android.content.Context;

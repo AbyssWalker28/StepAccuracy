@@ -15,35 +15,35 @@
         android:theme="@style/Theme.StephAccuracy">
 
         <activity
-            android:name=".AllPedometer_activity"
+            android:name=".activity.allPedometer_activity"
             android:theme="@style/Theme.StephAccuracy.NoActionBar"
             android:label="allPedometer">
         </activity>
 
         <activity
-            android:name=".simplePedometer_1_activity"
+            android:name=".activity.simplePedometer_1_activity"
             android:theme="@style/Theme.StephAccuracy.NoActionBar"
             android:label="simplePedometer">
         </activity>
 
         <activity
-            android:name=".gpsPedometer_2_activity"
+            android:name=".activity.gpsPedometer_2_activity"
             android:theme="@style/Theme.StephAccuracy.NoActionBar"
             android:label="gpsPedometer">
         </activity>
 
         <activity
-            android:name=".dirPedometer_3_activity"
+            android:name=".activity.dirPedometer_3_activity"
             android:theme="@style/Theme.StephAccuracy.NoActionBar"
             android:label="dirPedometer">
         </activity>
 
         <service
-            android:name=".SensorServiceAcc">
+            android:name=".sensor.SensorServiceAcc">
         </service>
 
         <service
-            android:name=".SensorServiceGPS">
+            android:name=".sensor.SensorServiceGPS">
         </service>
 
         <activity

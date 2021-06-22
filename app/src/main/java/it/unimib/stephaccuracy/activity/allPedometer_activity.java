@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.activity;
 
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.lifecycle.Observer;
@@ -8,15 +8,21 @@ package it.unimib.stephaccuracy;
         import android.content.Context;
         import android.content.Intent;
         import android.content.IntentFilter;
-        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import it.unimib.stephaccuracy.R;
+        import it.unimib.stephaccuracy.myDate;
+        import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
+        import it.unimib.stephaccuracy.pedometer.gpsPedometer_2;
+        import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
+        import it.unimib.stephaccuracy.sensor.SensorServiceAcc;
+        import it.unimib.stephaccuracy.sensor.SensorServiceGPS;
         import it.unimib.stephaccuracy.viewmodels.pedometer_viewModel;
 
-public class AllPedometer_activity extends AppCompatActivity {
+public class allPedometer_activity extends AppCompatActivity {
 
     private static final String TAG = "simplePedometer_1_act";
     private pedometer_viewModel vm;
@@ -113,21 +119,21 @@ public class AllPedometer_activity extends AppCompatActivity {
     }
 
     public void upload_step_db(){
-        vm.add_step1(myDate.dateConvert(), db_step_1 + step_ped_1).observe(AllPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step1(myDate.dateConvert(), db_step_1 + step_ped_1).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
             }
         });
 
-        vm.add_step2(myDate.dateConvert(), db_step_2 + step_ped_2).observe(AllPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step2(myDate.dateConvert(), db_step_2 + step_ped_2).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
             }
         });
 
-        vm.add_step3(myDate.dateConvert(), db_step_3 + step_ped_3).observe(AllPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step3(myDate.dateConvert(), db_step_3 + step_ped_3).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
@@ -136,7 +142,7 @@ public class AllPedometer_activity extends AppCompatActivity {
     }
 
     public void get_step_db(){
-        vm.get_step1(myDate.dateConvert()).observe(AllPedometer_activity.this, new Observer<Integer>() {
+        vm.get_step1(myDate.dateConvert()).observe(allPedometer_activity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 Log.d("prova", "integer" + integer);
@@ -144,14 +150,14 @@ public class AllPedometer_activity extends AppCompatActivity {
             }
         });
 
-        vm.get_step2(myDate.dateConvert()).observe(AllPedometer_activity.this, new Observer<Integer>() {
+        vm.get_step2(myDate.dateConvert()).observe(allPedometer_activity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 db_step_2 = integer;
             }
         });
 
-        vm.get_step3(myDate.dateConvert()).observe(AllPedometer_activity.this, new Observer<Integer>() {
+        vm.get_step3(myDate.dateConvert()).observe(allPedometer_activity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 db_step_3 = integer;

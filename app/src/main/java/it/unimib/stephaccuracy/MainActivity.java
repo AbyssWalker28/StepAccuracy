@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,13 +13,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.InputStream;
-import java.util.Date;
 
 import it.unimib.stephaccuracy.databinding.ActivityMainBinding;
-import it.unimib.stephaccuracy.repository.pedometer_repository;
+import it.unimib.stephaccuracy.pedometer.dirPedometer_3;
+import it.unimib.stephaccuracy.pedometer.simplePedometer_1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         if(!sharedPref.contains("step_dataset_1") && !sharedPref.contains("step_dataset_3") ){
             InputStream inputStream = getResources().openRawResource(R.raw.steps);
-            data dt = new data();
+            dataset dt = new dataset();
             dt.read_data(inputStream);
             for (int i = 0; i < dt.getSize(); i++) {
                 Log.d(TAG, "x: " + Float.toString(dt.getX().get(i)) + "   y: " + Float.toString(dt.getY().get(i)) + "   z: " + Float.toString(dt.getZ().get(i)) + "   i: " + i);

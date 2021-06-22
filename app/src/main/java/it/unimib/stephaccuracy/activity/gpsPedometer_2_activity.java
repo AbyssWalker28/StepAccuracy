@@ -1,4 +1,4 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,13 +13,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
+import java.math.BigDecimal;
 
-import java.util.Date;
+import it.unimib.stephaccuracy.R;
+import it.unimib.stephaccuracy.constants;
+import it.unimib.stephaccuracy.pedometer.gpsPedometer_2;
+import it.unimib.stephaccuracy.sensor.SensorServiceGPS;
 
-public class simplePedometer_1_activity extends AppCompatActivity {
+public class gpsPedometer_2_activity extends AppCompatActivity {
 
-    private static final String TAG = "simplePedometer_1_act";
+    private static final String TAG = "gpsPedometer_2_act";
     private int step = 0;
     private int step_percent = 0;
     private float distance = 0;
@@ -29,23 +31,33 @@ public class simplePedometer_1_activity extends AppCompatActivity {
     private Thread t;
     private boolean timer = false;
     private boolean goal = false;
-    private String date;
+    private String date = "";
     private String main_date = "";
 
     public class SensorsValuesBroadcastReceiver extends BroadcastReceiver {
         String receiver = "";
 
-        public SensorsValuesBroadcastReceiver() {}
+        public SensorsValuesBroadcastReceiver() {
+        }
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(intent.hasExtra("acc")){
-                SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
-                receiver = intent.getStringExtra("acc");
-                step = simplePedometer_1.updateStep(receiver);
+            if(intent.hasExtra("gps")) {
+                String row[];
+                SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+                receiver = intent.getStringExtra("gps");
+                step = gpsPedometer_2.updateStep(receiver);
+                row = receiver.split(",");
 
                 mSensorValuesTextView.setText("Step: " + step);
-                distance = (float)(step * 0.65);
-                distanceText.setText("Distance: " + (int)distance + "m");
+                latitudeText.setText("Lat: " + row[0]);
+                longitudeText.setText("Long: " + row[1]);
+                distance = gpsPedometer_2.getFullDistance();
+
+                if(sharedPref.getString("preferences_distance", "").equals("m"))
+                    distanceText.setText("Distance: " + (int)distance + "m");
+                else
+                    distanceText.setText("Distance: " + round(distance/1000) + "km");
 
                 //total_step = sharedPref.getInt("total_daily_step", 100);
                 float temp = (float) step / total_step;
@@ -59,13 +71,11 @@ public class simplePedometer_1_activity extends AppCompatActivity {
                     goal = true;
                     viewProgress.setText("100%");
                     Progressbar.setProgress(step);
-
-                    Snackbar.make(findViewById(android.R.id.content), "Hai raggiunto il tuo obbiettivo giornaliero!!", Snackbar.LENGTH_LONG).show();
-                    /*Context context2 = getApplicationContext();
+                    Context context2 = getApplicationContext();
                     CharSequence text = "Hai raggiunto il tuo obbiettivo giornaliero!!";
                     int duration = Toast.LENGTH_LONG;
                     Toast toast = Toast.makeText(context2, text, duration);
-                    toast.show();*/
+                    toast.show();
                 }
                 saveStep();
             }
@@ -73,60 +83,55 @@ public class simplePedometer_1_activity extends AppCompatActivity {
     }
 
     private TextView mSensorValuesTextView;
+    private TextView longitudeText;
+    private TextView latitudeText;
     private TextView distanceText;
     private TextView timeText;
     private TextView viewProgress;
     private TextView goalStep;
     private ProgressBar Progressbar;
-    private TextView accuracy;
     private SensorsValuesBroadcastReceiver mSensorsValuesBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_pedometer1);
+        setContentView(R.layout.activity_gps_pedometer2);
         mSensorValuesTextView = findViewById(R.id.id_addressText);
         viewProgress = findViewById(R.id.text_view_progress);
+        longitudeText = findViewById(R.id.id_Longitude);
+        latitudeText = findViewById(R.id.id_Latitude);
         distanceText = findViewById(R.id.id_distanceText);
         timeText = findViewById(R.id.id_timeText);
         Progressbar = findViewById(R.id.progressBar);
         goalStep = findViewById(R.id.goal_step);
 
-
-        SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         main_date = sharedPref.getString("date_pedometer", "");
-        date = sharedPref.getString("date_pedometer_1", "");
-        if(sharedPref.contains("step_pedometer_1") && main_date.equals(date)){
-            step = sharedPref.getInt("step_pedometer_1", 0);
-            time = sharedPref.getInt("time_pedometer_1", 0);
-            distance = sharedPref.getFloat("distance_pedometer_1",0);
+        date = sharedPref.getString("date_pedometer_2", "");
+        if(sharedPref.contains("step_pedometer_2") && main_date.equals(date)){
+            step = sharedPref.getInt("step_pedometer_2", 0);
+            time = sharedPref.getInt("time_pedometer_2", 0);
+            distance = sharedPref.getFloat("distance_pedometer_2",0);
             total_step = sharedPref.getInt("total_daily_step", 9000);
             Progressbar.setMax(total_step);
             goalStep.setText(total_step + "");
-            simplePedometer_1.setSTEP(step);
+            gpsPedometer_2.setSTEP(step, distance);
             //mSensorValuesTextView.setText(prev_step + "");
         }
         else {
-            editor.putString("date_pedometer_1", main_date);
+            editor.putString("date_pedometer_2", main_date);
             editor.apply();
-            simplePedometer_1.setSTEP(0);
+            gpsPedometer_2.setSTEP(0, 0);
             total_step = sharedPref.getInt("total_daily_step", 9000);
             goalStep.setText(total_step + "");
         }
 
-        if(sharedPref.contains("step_dataset_1")){
-            accuracy = findViewById(R.id.accuracy2);
-            float accuracy_perc = sharedPref.getInt("step_dataset_1", 0);
-            accuracy_perc = (((accuracy_perc * 100) / 500) - 100);
-            accuracy.setText((100 - accuracy_perc) + "%");
-        }
-
         calculate_time();
-        Intent intent = new Intent(this, SensorServiceAcc.class);
-        intent.putExtra("type", "1");
+        Intent intent = new Intent(this, SensorServiceGPS.class);
         startService(intent);
+        saveStep();
     }
 
     @Override
@@ -143,24 +148,21 @@ public class simplePedometer_1_activity extends AppCompatActivity {
         super.onStop();
         unregisterReceiver(mSensorsValuesBroadcastReceiver);
         timer = true;
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
+        //t.interrupt();
+        //Log.d("time", t.isInterrupted() + "");
     }
 
     private void saveStep(){
-        SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("step_pedometer_1", step);
-        editor.putFloat("distance_pedometer_1", distance);
+        editor.putInt("step_pedometer_2", step);
+        editor.putFloat("distance_pedometer_2", distance);
         //editor.putString("date_pedometer", date);
         editor.apply();
     }
 
     private void calculate_time(){
-        SharedPreferences sharedPref = getSharedPreferences(Constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         ImageView x = findViewById(R.id.step_icon);
         Thread t=new Thread(){
@@ -177,8 +179,13 @@ public class simplePedometer_1_activity extends AppCompatActivity {
                                 else
                                     x.setImageResource(R.drawable.footprints_white);
                                 time++;
-                                timeText.setText("Time: " + time + " s");
-                                editor.putInt("time_pedometer_1", time);
+
+                                if(sharedPref.getString("preferences_time", "").equals("sec"))
+                                    timeText.setText("Time: " + time + " s");
+                                else
+                                    timeText.setText("Time: " + time/60 + " min");
+
+                                editor.putInt("time_pedometer_2", time);
                                 editor.apply();
                             }
                         });
@@ -192,5 +199,7 @@ public class simplePedometer_1_activity extends AppCompatActivity {
         t.start();
     }
 
-
+    public static float round(float d) {
+        return BigDecimal.valueOf(d).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
 }

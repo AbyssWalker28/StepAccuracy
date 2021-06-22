@@ -1,6 +1,6 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.pedometer;
 
-import android.util.Log;
+import it.unimib.stephaccuracy.dataset;
 
 public class simplePedometer_1 {
 
@@ -19,7 +19,7 @@ public class simplePedometer_1 {
     private static float[] velRing = new float[VEL_RING_SIZE];
     private static float oldVelocityEstimate = 0;
 
-    public static int count_step(data d){
+    public static int count_step(dataset d){
         for(int i = 0; i < d.getSize(); i++) {
             updateAccel(d.getX().get(i), d.getY().get(i), d.getZ().get(i));
         }

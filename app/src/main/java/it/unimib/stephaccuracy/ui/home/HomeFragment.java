@@ -10,9 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -21,12 +19,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import it.unimib.stephaccuracy.AllPedometer_activity;
+import it.unimib.stephaccuracy.activity.allPedometer_activity;
 import it.unimib.stephaccuracy.R;
 import it.unimib.stephaccuracy.databinding.FragmentHomeBinding;
-import it.unimib.stephaccuracy.dirPedometer_3_activity;
-import it.unimib.stephaccuracy.gpsPedometer_2_activity;
-import it.unimib.stephaccuracy.simplePedometer_1_activity;
+import it.unimib.stephaccuracy.activity.dirPedometer_3_activity;
+import it.unimib.stephaccuracy.activity.gpsPedometer_2_activity;
+import it.unimib.stephaccuracy.activity.simplePedometer_1_activity;
+import it.unimib.stephaccuracy.viewmodels.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 
@@ -82,7 +81,7 @@ public class HomeFragment extends Fragment {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openAllPedometer = new Intent(getActivity(), AllPedometer_activity.class);
+                Intent openAllPedometer = new Intent(getActivity(), allPedometer_activity.class);
                 startActivity(openAllPedometer);
             }
         });

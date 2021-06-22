@@ -1,6 +1,8 @@
-package it.unimib.stephaccuracy;
+package it.unimib.stephaccuracy.pedometer;
 
 import android.hardware.SensorManager;
+
+import it.unimib.stephaccuracy.dataset;
 
 public class dirPedometer_3 {
 
@@ -24,7 +26,7 @@ public class dirPedometer_3 {
         mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
     }
 
-    public static int count_step(data d){
+    public static int count_step(dataset d){
         setting();
         for(int i = 0; i < d.getSize(); i++) {
             updateAccel(d.getX().get(i), d.getY().get(i), d.getZ().get(i));
