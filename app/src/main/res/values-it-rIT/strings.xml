@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">StephAccuracy</string>
-    <string name="selection">Scegli un algoritmo di un pedometro</string>
-    <string name="buttonPed1">Algoritmo 1</string>
-    <string name="buttonPed2">Algoritmo 2</string>
-    <string name="buttonPed3">Algoritmo 3</string>
-    <string name="pedometer_page_1">Simple Pedometer</string>
+    <string name="app_name">StepAccuracy</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Impostazioni</string>
-    <string name="show_step">passi:</string>
-    <string name="buttonPedAll">Tutti gli algoritmi</string>
+
+    <!-- Home fragment-->
+    <string name="start_message">Premi per confrontare gli algoritmi</string>
+    <string name="first_algorithm">Algoritmo 1</string>
+    <string name="second_algorithm">Algoritmo 2</string>
+    <string name="third_algorithm">Algoritmo 3</string>
+
+
+    <!-- Pedometers layout-->
+    <string name="time">Tempo</string>
+    <string name="distance">Distanza</string>
+    <string name="accuracy">Accuratezza</string>
+    <string name="latitude">Latitudine</string>
+    <string name="longitude">Longitudine</string>
+    <string name="steps">Passi</string>
+
+    <!-- Numbers-->
+    <string name="zero">0</string>
+    <string name="zeroP">0%</string>
 </resources>

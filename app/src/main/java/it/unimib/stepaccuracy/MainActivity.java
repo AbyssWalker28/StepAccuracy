@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putInt("step_dataset_3", step_calculated_3);
             editor.apply();
         }
-        //SISTEMARE
+
         if(!sharedPref.contains("date_pedometer") || !(sharedPref.getString("date_pedometer", "").equals(myDate.dateConvert()))){
             editor.putString("date_pedometer", myDate.dateConvert());
             editor.apply();
