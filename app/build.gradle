@@ -45,6 +45,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -54,4 +55,8 @@ dependencies {
     // Declare the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database'
+}
+
+repositories {
+    maven { url 'https://jitpack.io/' }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -8,273 +8,278 @@
     android:orientation="vertical"
     android:background="#f4f4f4">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="235dp"
-            android:layout_height="105dp"
-            android:src="@drawable/logo2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="6dp"></ImageView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:indeterminateOnly="false"
-            android:orientation="vertical"
-            android:progressDrawable="@drawable/circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:ignore="MissingConstraints"
-            tools:progress="0">
-        </ProgressBar>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="235dp"
+                android:layout_height="105dp"
+                android:src="@drawable/logo2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="6dp"></ImageView>
 
-        <TextView
-            android:id="@+id/goal_step"
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:indeterminateOnly="false"
+                android:orientation="vertical"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                tools:ignore="MissingConstraints"
+                tools:progress="0">
+            </ProgressBar>
+
+            <TextView
+                android:id="@+id/goal_step"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.727" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="18dp"
+                android:layout_height="19dp"
+                android:src="@drawable/trophy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.562"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.728"></ImageView>
+
+            <TextView
+                android:id="@+id/text_view_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="0%"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="@+id/progressBar"
+                app:layout_constraintTop_toTopOf="@+id/progressBar"
+                app:layout_constraintVertical_bias="0.388"></TextView>
+
+            <TextView
+                android:id="@+id/id_addressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Step: "
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.489"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/step_icon"
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:src="@drawable/footprints"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/id_addressText"
+                app:layout_constraintHorizontal_bias="0.952"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"></ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>>
+
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.727" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="2"
+            android:backgroundTint="#f4f4f4">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="18dp"
-            android:layout_height="19dp"
-            android:src="@drawable/trophy"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.728"></ImageView>
-
-        <TextView
-            android:id="@+id/text_view_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="0%"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="@+id/progressBar"
-            app:layout_constraintTop_toTopOf="@+id/progressBar"
-            app:layout_constraintVertical_bias="0.388"></TextView>
-
-        <TextView
-            android:id="@+id/id_addressText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Step: "
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/step_icon"
-            android:layout_width="15dp"
-            android:layout_height="25dp"
-            android:src="@drawable/footprints"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/id_addressText"
-            app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"></ImageView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
-        android:rowCount="2"
-        android:backgroundTint="#f4f4f4">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-
-            <androidx.cardview.widget.CardView
-
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                android:outlineSpotShadowColor="#f4f4f4"
-                >
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="40dp"
-                    android:src="@drawable/icons8_latitude_100" />
 
-                <TextView
-                    android:id="@+id/id_Latitude"
+                <androidx.cardview.widget.CardView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="7dp"
-                    android:text="Latitude"
-                    android:textColor="@color/black"
-                    android:textSize="13dp" />
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:backgroundTint="@color/cards_color"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    android:outlineSpotShadowColor="#f4f4f4"
+                    >
 
-            </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="40dp"
+                        android:src="@drawable/icons8_latitude_100" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/id_Latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="7dp"
+                        android:text="Latitude"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
+                </androidx.cardview.widget.CardView>
 
+            </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="0dp"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                android:outlineSpotShadowColor="#f4f4f4">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="40dp"
-                    android:src="@drawable/icons8_longitude_100" />
 
-                <TextView
-                    android:id="@+id/id_Longitude"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="7dp"
-                    android:text="Longitude: "
-                    android:textColor="@color/black"
-                    android:textSize="13dp" />
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
+                <androidx.cardview.widget.CardView
 
-            <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/cards_color"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    android:outlineSpotShadowColor="#f4f4f4">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="40dp"
+                        android:src="@drawable/icons8_longitude_100" />
+
+                    <TextView
+                        android:id="@+id/id_Longitude"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="7dp"
+                        android:text="Longitude: "
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="0dp"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                android:outlineSpotShadowColor="#f4f4f4">
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="40dp"
-                    android:src="@drawable/icons8_time_100" />
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/cards_color"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    android:outlineSpotShadowColor="#f4f4f4">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="40dp"
+                        android:src="@drawable/icons8_time_100" />
 
 
-                <TextView
-                    android:id="@+id/id_timeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="7dp"
-                    android:text="Tempo Trascorso: "
-                    android:textColor="@color/black"
-                    android:textSize="13dp" />
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/id_timeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="7dp"
+                        android:text="Tempo Trascorso: "
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <androidx.cardview.widget.CardView
-
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="0dp"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/cards_color"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                android:outlineSpotShadowColor="#f4f4f4">
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="40dp"
-                    android:src="@drawable/icons8_route_100" />
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/id_distanceText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="7dp"
-                    android:text="Distance: "
-                    android:textColor="@color/black"
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/cards_color"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    android:outlineSpotShadowColor="#f4f4f4">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="40dp"
+                        android:src="@drawable/icons8_route_100" />
+
+                    <TextView
+                        android:id="@+id/id_distanceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="7dp"
+                        android:text="Distance: "
+                        android:textColor="@color/black"
 
 
-                    android:textSize="13dp" />
+                        android:textSize="13dp" />
 
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </GridLayout>
-</LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>

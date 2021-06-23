@@ -71,14 +71,12 @@ public class pedometer_repository {
 
     public LiveData<Integer> get_step1(String date){
         MutableLiveData<Integer> ld = new MutableLiveData<Integer>();
-        Log.d("prova", date);
         db.child(date).child("step_1").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
                 int step;
                 if(task.isSuccessful() && task.getResult() != null){
                     step = task.getResult().getValue(Integer.class);
-                    Log.d("prova", step + " livedata");
                     ld.postValue(step);
                 }
                 else{

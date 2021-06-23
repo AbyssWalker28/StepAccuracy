@@ -8,10 +8,15 @@ package it.unimib.stepaccuracy.activity;
         import android.content.Context;
         import android.content.Intent;
         import android.content.IntentFilter;
+        import android.net.ConnectivityManager;
+        import android.net.NetworkInfo;
         import android.os.Bundle;
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
+
+        import com.google.android.material.snackbar.BaseTransientBottomBar;
+        import com.google.android.material.snackbar.Snackbar;
 
         import it.unimib.stepaccuracy.R;
         import it.unimib.stepaccuracy.myDate;
@@ -24,7 +29,7 @@ package it.unimib.stepaccuracy.activity;
 
 public class allPedometer_activity extends AppCompatActivity {
 
-    private static final String TAG = "simplePedometer_1_act";
+    private static final String TAG = "allPedometer_1_act";
     private pedometer_viewModel vm;
     int step_ped_1 = 0;
     int step_ped_2 = 0;
@@ -34,9 +39,10 @@ public class allPedometer_activity extends AppCompatActivity {
     int db_step_2 = 0;
     int db_step_3 = 0;
 
+    Snackbar connection_error;
+
     public class SensorsValuesBroadcastReceiver extends BroadcastReceiver {
         String receiver = "";
-
 
         public SensorsValuesBroadcastReceiver() {
         }
@@ -55,8 +61,15 @@ public class allPedometer_activity extends AppCompatActivity {
                 step_ped_2 = gpsPedometer_2.updateStep(receiver);
                 mSensorValuesTextView2.setText(step_ped_2 + "");
             }
-            //inserimento controllo rete abilitata, aggiungere toast in assenza di rete
-            upload_step_db();
+
+            if(isNetworkAvailable()) {
+                get_step_db();
+                upload_step_db();
+                if(connection_error.isShown())
+                    connection_error.dismiss();
+            }
+            else if(!connection_error.isShown())
+                    connection_error.show();
         }
     }
 
@@ -74,16 +87,13 @@ public class allPedometer_activity extends AppCompatActivity {
         mSensorValuesTextView = findViewById(R.id.sensor_values);
         mSensorValuesTextView2 = findViewById(R.id.sensor_values2);
         mSensorValuesTextView3 = findViewById(R.id.sensor_values3);
+        connection_error = Snackbar.make(findViewById(android.R.id.content), "Connessione persa, impossibile salvare i dati", Snackbar.LENGTH_INDEFINITE);
+
+        //get_step_db();
 
         simplePedometer_1.setSTEP(0);
         dirPedometer_3.setSTEP(0);
         gpsPedometer_2.setSTEP(0, 0);
-
-        //get_step_db();
-
-        Log.d("prova", db_step_1 + " ped1");
-        Log.d("prova", db_step_2 + " ped2");
-        Log.d("prova", db_step_3 + " ped3");
 
         Intent intent = new Intent(this, SensorServiceAcc.class);
         intent.putExtra("type", "1");
@@ -119,21 +129,21 @@ public class allPedometer_activity extends AppCompatActivity {
     }
 
     public void upload_step_db(){
-        vm.add_step1(myDate.dateConvert(), db_step_1 + step_ped_1).observe(allPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step1(myDate.dateConvert(), /*db_step_1 + */step_ped_1).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
             }
         });
 
-        vm.add_step2(myDate.dateConvert(), db_step_2 + step_ped_2).observe(allPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step2(myDate.dateConvert(), /*db_step_2 + */step_ped_2).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
             }
         });
 
-        vm.add_step3(myDate.dateConvert(), db_step_3 + step_ped_3).observe(allPedometer_activity.this, new Observer<Boolean>() {
+        vm.add_step3(myDate.dateConvert(), /*db_step_3 + */step_ped_3).observe(allPedometer_activity.this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 update_failed(aBoolean);
@@ -145,7 +155,6 @@ public class allPedometer_activity extends AppCompatActivity {
         vm.get_step1(myDate.dateConvert()).observe(allPedometer_activity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                Log.d("prova", "integer" + integer);
                 db_step_1 = integer;
             }
         });
@@ -164,8 +173,13 @@ public class allPedometer_activity extends AppCompatActivity {
             }
         });
 
+    }
 
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }
