@@ -15,8 +15,16 @@ package it.unimib.stepaccuracy.activity;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import com.github.mikephil.charting.components.Description;
+        import com.github.mikephil.charting.components.YAxis;
+        import com.github.mikephil.charting.data.BarData;
+        import com.github.mikephil.charting.data.BarDataSet;
+        import com.github.mikephil.charting.data.BarEntry;
+        import com.github.mikephil.charting.utils.ColorTemplate;
         import com.google.android.material.snackbar.BaseTransientBottomBar;
         import com.google.android.material.snackbar.Snackbar;
+
+        import java.util.ArrayList;
 
         import it.unimib.stepaccuracy.R;
         import it.unimib.stepaccuracy.myDate;
@@ -27,6 +35,12 @@ package it.unimib.stepaccuracy.activity;
         import it.unimib.stepaccuracy.sensor.SensorServiceGPS;
         import it.unimib.stepaccuracy.viewmodels.pedometer_viewModel;
 
+        import com.github.mikephil.charting.charts.BarChart;
+        import com.github.mikephil.charting.data.BarData;
+        import com.github.mikephil.charting.data.BarDataSet;
+        import com.github.mikephil.charting.data.BarEntry;
+        import com.github.mikephil.charting.utils.ColorTemplate;
+
 public class allPedometer_activity extends AppCompatActivity {
 
     private static final String TAG = "allPedometer_1_act";
@@ -35,9 +49,9 @@ public class allPedometer_activity extends AppCompatActivity {
     int step_ped_2 = 0;
     int step_ped_3 = 0;
 
-    int db_step_1 = 0;
-    int db_step_2 = 0;
-    int db_step_3 = 0;
+    BarEntry ped1;
+    BarEntry ped2;
+    BarEntry ped3;
 
     Snackbar connection_error;
 
@@ -62,8 +76,11 @@ public class allPedometer_activity extends AppCompatActivity {
                 mSensorValuesTextView2.setText(step_ped_2 + "");
             }
 
+            ped1.setY(step_ped_1);
+            ped2.setY(step_ped_2);
+            ped3.setY(step_ped_3);
+
             if(isNetworkAvailable()) {
-                get_step_db();
                 upload_step_db();
                 if(connection_error.isShown())
                     connection_error.dismiss();
@@ -77,6 +94,7 @@ public class allPedometer_activity extends AppCompatActivity {
     private TextView mSensorValuesTextView2;
     private TextView mSensorValuesTextView3;
     private SensorsValuesBroadcastReceiver mSensorsValuesBroadcastReceiver;
+    private BarChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +106,43 @@ public class allPedometer_activity extends AppCompatActivity {
         mSensorValuesTextView2 = findViewById(R.id.sensor_values2);
         mSensorValuesTextView3 = findViewById(R.id.sensor_values3);
         connection_error = Snackbar.make(findViewById(android.R.id.content), "Connessione persa, impossibile salvare i dati", Snackbar.LENGTH_INDEFINITE);
+        chart = findViewById(R.id.fragment_verticalbarchart_chart);
+
+
+
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        ped1 = new BarEntry(1f, 0);
+        ped2 = new BarEntry(3f, 0);
+        ped3 = new BarEntry(5f, 0);
+        entries.add(ped1);
+        entries.add(ped2);
+        entries.add(ped3);
+
+
+
+        BarDataSet bardataset = new BarDataSet(entries, "Step");
+
+        /*ArrayList<String> labels = new ArrayList<String>();
+        labels.add("2016");
+        labels.add("2015");
+        labels.add("2014");
+        labels.add("2013");
+        labels.add("2012");
+        labels.add("2011");*/
+
+        BarData data = new BarData(bardataset);
+        chart.setData(data); // set the data and list of labels into chart
+        Description x = new Description();
+        x.setText("");
+        chart.setDescription(x);  // set the description
+
+        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.setDoubleTapToZoomEnabled(false);
+        /*chart.setPinchZoom(false);
+        chart.setFocusable(false);*/
+        chart.setAutoScaleMinMaxEnabled(true);
+        //chart.animateY(3000);
+
 
         //get_step_db();
 
@@ -151,7 +206,7 @@ public class allPedometer_activity extends AppCompatActivity {
         });
     }
 
-    public void get_step_db(){
+    /*public void get_step_db(){
         vm.get_step1(myDate.dateConvert()).observe(allPedometer_activity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
@@ -173,7 +228,7 @@ public class allPedometer_activity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager

@@ -12,14 +12,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import it.unimib.stepaccuracy.R;
 import it.unimib.stepaccuracy.constants;
 import it.unimib.stepaccuracy.pedometer.simplePedometer_1;
 import it.unimib.stepaccuracy.sensor.SensorServiceAcc;
+
+
 
 public class simplePedometer_1_activity extends AppCompatActivity {
 
@@ -35,9 +39,6 @@ public class simplePedometer_1_activity extends AppCompatActivity {
 
     private boolean timer = false;
     private boolean goal = false;
-
-
-
 
     public class SensorsValuesBroadcastReceiver extends BroadcastReceiver {
         String receiver = "";
@@ -77,6 +78,9 @@ public class simplePedometer_1_activity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context2, text, duration);
                     toast.show();*/
                 }
+
+
+
                 saveStep();
             }
         }
@@ -132,8 +136,8 @@ public class simplePedometer_1_activity extends AppCompatActivity {
             accuracy_perc = (((accuracy_perc * 100) / 500) - 100);
             accuracy.setText((100 - accuracy_perc) + "%");
         }
-
         calculate_time();
+
         Intent intent = new Intent(this, SensorServiceAcc.class);
         intent.putExtra("type", "1");
         startService(intent);
