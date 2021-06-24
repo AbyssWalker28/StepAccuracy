@@ -49,15 +49,15 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
                 step = gpsPedometer_2.updateStep(receiver);
                 row = receiver.split(",");
 
-                mSensorValuesTextView.setText("Step: " + step);
-                latitudeText.setText("Lat: " + row[0]);
-                longitudeText.setText("Long: " + row[1]);
+                mSensorValuesTextView.setText("" + step);
+                latitudeText.setText("" + row[0]);
+                longitudeText.setText("" + row[1]);
                 distance = gpsPedometer_2.getFullDistance();
 
                 if(sharedPref.getString("preferences_distance", "").equals("m"))
-                    distanceText.setText("Distance: " + (int)distance + "m");
+                    distanceText.setText("" + (int)distance + "m");
                 else
-                    distanceText.setText("Distance: " + round(distance/1000) + "km");
+                    distanceText.setText("" + round(distance/1000) + "km");
 
                 //total_step = sharedPref.getInt("total_daily_step", 100);
                 float temp = (float) step / total_step;
@@ -181,9 +181,9 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
                                 time++;
 
                                 if(sharedPref.getString("preferences_time", "").equals("sec"))
-                                    timeText.setText("Time: " + time + " s");
+                                    timeText.setText("" + time + " s");
                                 else
-                                    timeText.setText("Time: " + time/60 + " min");
+                                    timeText.setText("" + time/60 + " min");
 
                                 editor.putInt("time_pedometer_2", time);
                                 editor.apply();

@@ -12,7 +12,8 @@
         android:layout_height="38dp"
         android:layout_marginTop="25dp"
         android:paddingLeft="10dp"
-        android:text="Seleziona la misura del tempo"
+        android:text="@string/time_text"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/editText1" />
@@ -28,9 +29,10 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="11dp"
         android:ems="10"
-        android:hint="Enter value"
+        android:hint="@string/edit_goal_step"
         android:inputType="number"
         android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +47,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="#FFF"
-        android:text="Save"
+        android:text="@string/button_save"
         android:textColor="@color/black"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingLeft="10dp"
-        android:text="Inserisci numero di passi giornaliero"
+        android:text="@string/set_daily_step_text"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,14 +78,18 @@
             android:id="@+id/radioButtonSecondi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Secondi"
-            android:checked="true"/>
+            android:checked="true"
+            android:text="@string/radiobutton_second"
+            android:textSize="15dp"
+            app:buttonTint="@color/black" />
 
         <RadioButton
             android:id="@+id/radioButtonMinuti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Minuti" />
+            android:text="@string/radiobutton_minute"
+            android:textSize="15dp"
+            app:buttonTint="@color/black" />
     </RadioGroup>
 
     <RadioGroup
@@ -96,14 +103,23 @@
             android:id="@+id/radioButtonChilometri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chilometri(Km)" />
+            android:text="@string/radiobutton_chilometer"
+            android:textSize="15dp"
+            app:buttonTint="@color/black" />
 
         <RadioButton
             android:id="@+id/radioButtonMetri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Metri(m)"
-            android:checked="true"/>
+            android:checked="true"
+            android:text="@string/radiobutton_meter"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@color/black"
+            android:textSize="15dp"
+            app:buttonTint="@color/black" />
     </RadioGroup>
 
     <TextView
@@ -112,7 +128,8 @@
         android:layout_height="38dp"
         android:layout_marginTop="25dp"
         android:paddingLeft="10dp"
-        android:text="Seleziona la misura della distanza"
+        android:text="@string/distance_text"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupTempo"

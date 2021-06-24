@@ -1,6 +1,9 @@
 package it.unimib.stepaccuracy.ui.home;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Build;
@@ -10,9 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -37,14 +43,28 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-        //Button b1 = root.findViewById(R.id.button);
         CardView b1 = root.findViewById(R.id.alg1);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent openSimplePedometerActivity = new Intent(getActivity(), simplePedometer_1_activity.class);
                 startActivity(openSimplePedometerActivity);
+            }
+        });
+        b1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.first_algorithm);
+                builder.setMessage(R.string.info_pedometer1);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                builder.show();
+                return false;
             }
         });
 
@@ -67,6 +87,22 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+        b2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.second_algorithm);
+                builder.setMessage(R.string.info_pedometer2);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                builder.show();
+                return false;
+            }
+        });
 
         CardView b3 = root.findViewById(R.id.alg3);
         b3.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +110,22 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent openDirPedometerActivity = new Intent(getActivity(), dirPedometer_3_activity.class);
                 startActivity(openDirPedometerActivity);
+            }
+        });
+        b3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.third_algorithm);
+                builder.setMessage(R.string.info_pedometer3);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                builder.show();
+                return false;
             }
         });
 
@@ -85,6 +137,42 @@ public class HomeFragment extends Fragment {
                 startActivity(openAllPedometer);
             }
         });
+        b4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(R.string.start_button);
+                builder.setMessage(R.string.info_buttonPlay);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                builder.show();
+                return false;
+            }
+        });
+
+        ImageView b5 = root.findViewById(R.id.infoButton);
+        b5.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Info Pedometer");
+                builder.setCancelable(false);
+                builder.setView(R.layout.information_dialog);
+                builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+            }
+        });
+
 
         return root;
     }

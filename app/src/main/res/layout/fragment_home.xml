@@ -24,7 +24,8 @@
                 android:layout_height="79dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
                 android:layout_marginTop="35dp"
                 android:src="@drawable/logo2"></ImageView>
         </RelativeLayout>
@@ -48,8 +49,30 @@
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="@string/start_message"></TextView>
+                android:text="@string/start_message"
+                android:textColor="@color/black"></TextView>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/message_pedometer"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/infoButton"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icons8_info_500" />
+        </LinearLayout>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -92,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Algoritmo 1"
+                        android:text="@string/first_algorithm"
                         android:textColor="@color/black"
                         android:textSize="12sp"></TextView>
                 </LinearLayout>
@@ -127,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Algoritmo 2"
+                        android:text="@string/second_algorithm"
                         android:textColor="@color/black"
                         android:textSize="12sp"></TextView>
                 </LinearLayout>
@@ -162,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Algoritmo 3"
+                        android:text="@string/third_algorithm"
                         android:textColor="@color/black"
                         android:textSize="12sp"></TextView>
                 </LinearLayout>

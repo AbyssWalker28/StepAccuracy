@@ -23,4 +23,19 @@
     <!-- Numbers-->
     <string name="zero">0</string>
     <string name="zeroP">0%</string>
+    <string name="set_daily_step_text">Inserisci il numero di passi giornaliero</string>
+    <string name="edit_goal_step">Inserisci un valore</string>
+    <string name="time_text">Seleziona la misura del tempo</string>
+    <string name="radiobutton_second">Secondi</string>
+    <string name="radiobutton_minute">Minuti</string>
+    <string name="distance_text">Seleziona la misura della distanza</string>
+    <string name="radiobutton_chilometer">Chilometri(km)</string>
+    <string name="radiobutton_meter">Metri(m)</string>
+    <string name="button_save">salva</string>
+    <string name="info_buttonPlay">Permette l’utilizzo in contemporanea dei 3 algoritmi di step counting implementati.</string>
+    <string name="info_pedometer1">Pedometro che utilizza i dati dell’accelerometro per valutare il movimento di un passo. Utilizza un metodo di raccolta dati a finestra sovrapposta di dimensione 50, che viene popolata man mano che vengono letti dati dai sensori.</string>
+    <string name="info_pedometer2">Pedometro che utilizza i dati del GPS con latitudine e longitudine per calcolare la distanza tra due punti e quindi i relativi passi effettuati. I dati rilevati dai sensori si aggiornano ogniqualvolta viene percorsa una distasa di almeno 10 metri.</string>
+    <string name="info_pedometer3">Pedometro che utilizza i dati dell’accelerometro per valutare il movimento di un passo. I dati dei sensori non vengono salvati volta per volta ed utilizzati ma il calcolo dei passi avviene solamente con ogni nuova tripletta di dati accelerometrici.</string>
+    <string name="start_button">Start</string>
+    <string name="message_pedometer">Scegli un pedometro</string>
 </resources>

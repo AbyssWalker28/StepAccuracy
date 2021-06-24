@@ -53,9 +53,9 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                     distance = (float)(step * 0.65);
 
                     if(sharedPref.getString("preferences_distance", "").equals("m"))
-                        distanceText.setText("Distance: " + (int)distance + "m");
+                        distanceText.setText("" + (int)distance + "m");
                     else
-                        distanceText.setText("Distance: " + round(distance/1000) + "km");
+                        distanceText.setText("" + round(distance/1000) + "km");
 
                     float temp = (float) step / total_step;
                     step_percent = (int) (temp * 100);
@@ -181,9 +181,9 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                                 time++;
 
                                 if(sharedPref.getString("preferences_time", "").equals("sec"))
-                                    timeText.setText("Time: " + time + " s");
+                                    timeText.setText("" + time + " s");
                                 else
-                                    timeText.setText("Time: " + time/60 + " min");
+                                    timeText.setText("" + time/60 + " min");
 
                                 editor.putInt("time_pedometer_3", time);
                                 editor.apply();

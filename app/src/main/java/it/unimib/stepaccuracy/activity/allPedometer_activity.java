@@ -12,10 +12,12 @@ package it.unimib.stepaccuracy.activity;
         import android.net.NetworkInfo;
         import android.os.Bundle;
         import android.util.Log;
+        import android.view.View;
         import android.widget.TextView;
         import android.widget.Toast;
 
         import com.github.mikephil.charting.components.Description;
+        import com.github.mikephil.charting.components.Legend;
         import com.github.mikephil.charting.components.YAxis;
         import com.github.mikephil.charting.data.BarData;
         import com.github.mikephil.charting.data.BarDataSet;
@@ -54,6 +56,7 @@ public class allPedometer_activity extends AppCompatActivity {
     BarEntry ped3;
 
     Snackbar connection_error;
+    boolean snackbar_closed = false;
 
     public class SensorsValuesBroadcastReceiver extends BroadcastReceiver {
         String receiver = "";
@@ -80,13 +83,19 @@ public class allPedometer_activity extends AppCompatActivity {
             ped2.setY(step_ped_2);
             ped3.setY(step_ped_3);
 
+            chart.notifyDataSetChanged();
+            chart.invalidate();
+
             if(isNetworkAvailable()) {
                 upload_step_db();
-                if(connection_error.isShown())
+                if(connection_error.isShown()) {
                     connection_error.dismiss();
+                }
+                snackbar_closed = false;
             }
-            else if(!connection_error.isShown())
-                    connection_error.show();
+            else if(!connection_error.isShown() && snackbar_closed == false) {
+                connection_error.show();
+            }
         }
     }
 
@@ -105,10 +114,14 @@ public class allPedometer_activity extends AppCompatActivity {
         mSensorValuesTextView = findViewById(R.id.sensor_values);
         mSensorValuesTextView2 = findViewById(R.id.sensor_values2);
         mSensorValuesTextView3 = findViewById(R.id.sensor_values3);
-        connection_error = Snackbar.make(findViewById(android.R.id.content), "Connessione persa, impossibile salvare i dati", Snackbar.LENGTH_INDEFINITE);
+        connection_error = Snackbar.make(findViewById(android.R.id.content), "Connessione persa, impossibile salvare i dati", Snackbar.LENGTH_INDEFINITE).setAction("Close", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connection_error.dismiss();
+                snackbar_closed = true;
+            }
+        });
         chart = findViewById(R.id.fragment_verticalbarchart_chart);
-
-
 
         ArrayList<BarEntry> entries = new ArrayList<>();
         ped1 = new BarEntry(1f, 0);
@@ -118,10 +131,7 @@ public class allPedometer_activity extends AppCompatActivity {
         entries.add(ped2);
         entries.add(ped3);
 
-
-
         BarDataSet bardataset = new BarDataSet(entries, "Step");
-
         /*ArrayList<String> labels = new ArrayList<String>();
         labels.add("2016");
         labels.add("2015");
@@ -137,12 +147,23 @@ public class allPedometer_activity extends AppCompatActivity {
         chart.setDescription(x);  // set the description
 
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        chart.setDoubleTapToZoomEnabled(false);
-        /*chart.setPinchZoom(false);
-        chart.setFocusable(false);*/
+        bardataset.setValueTextSize(15);
         chart.setAutoScaleMinMaxEnabled(true);
-        //chart.animateY(3000);
+        chart.setTouchEnabled(false);
 
+        chart.getAxisLeft().setTextSize(12);
+        chart.getAxisRight().setTextSize(12);
+        chart.getXAxis().setTextSize(12);
+
+        Legend l = chart.getLegend();
+        l.setTextSize(15);
+        l.setFormSize(10);
+        //chart.setFocusable(true);
+        //chart.setFocusableInTouchMode(true);
+
+        //chart.notifyDataSetChanged();
+        //chart.invalidate();
+        //chart.animateY(3000);
 
         //get_step_db();
 

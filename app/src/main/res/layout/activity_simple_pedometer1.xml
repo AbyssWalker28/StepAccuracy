@@ -26,7 +26,7 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="6dp"></ImageView>
+                tools:layout_editor_absoluteY="6dp"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0"
+                android:text="@string/zero"
                 android:textColor="@color/black"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
                 app:layout_constraintHorizontal_bias="0.562"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.728"></ImageView>
+                app:layout_constraintVertical_bias="0.728"/>
 
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:text="0%"
+                android:text="@string/zeroP"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -84,7 +84,7 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="@+id/progressBar"
                 app:layout_constraintTop_toTopOf="@+id/progressBar"
-                app:layout_constraintVertical_bias="0.394"></TextView>
+                app:layout_constraintVertical_bias="0.394"/>
 
             <TextView
                 android:id="@+id/id_addressText"
@@ -93,7 +93,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Step: "
+                android:text="@string/steps"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.489"
@@ -111,7 +111,7 @@
                 app:layout_constraintHorizontal_bias="0.952"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"></ImageView>
+                app:layout_constraintVertical_bias="1.0"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,6 +146,17 @@
                     app:cardCornerRadius="12dp"
                     app:cardElevation="6dp"
                     android:outlineSpotShadowColor="#f4f4f4">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/time"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
+
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -158,7 +169,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
-                        android:text="Time: "
                         android:layout_marginBottom="7dp"
                         android:textColor="@color/black"
                         android:textSize="13dp"
@@ -189,6 +199,15 @@
                     app:cardElevation="6dp"
                     android:outlineSpotShadowColor="#f4f4f4">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/distance"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -200,7 +219,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
-                        android:text="Distance: "
                         android:layout_marginBottom="7dp"
                         android:textColor="@color/black"
                         android:textSize="13dp"
@@ -255,7 +273,7 @@
                         android:layout_gravity="top|center"
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Accuracy:"
+                        android:text="@string/accuracy"
                         android:textColor="@color/black"
                         android:textSize="13dp" />
 
