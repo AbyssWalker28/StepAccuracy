@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.math.BigDecimal;
 
 import it.unimib.stepaccuracy.pedometer.gpsPedometer_2;
@@ -42,10 +44,10 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(intent.hasExtra("gps")) {
+            if(intent.hasExtra(constants.BROADCAST_GPS)) {
                 String row[];
                 SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
-                receiver = intent.getStringExtra("gps");
+                receiver = intent.getStringExtra(constants.BROADCAST_GPS);
                 step = gpsPedometer_2.updateStep(receiver);
                 row = receiver.split(",");
 
@@ -54,7 +56,7 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
                 longitudeText.setText("" + row[1]);
                 distance = gpsPedometer_2.getFullDistance();
 
-                if(sharedPref.getString("preferences_distance", "").equals("m"))
+                if(sharedPref.getString(constants.PREFERENCES_DISTANCE, "").equals(constants.PREFERENCES_MT))
                     distanceText.setText("" + (int)distance + "m");
                 else
                     distanceText.setText("" + round(distance/1000) + "km");
@@ -71,11 +73,7 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
                     goal = true;
                     viewProgress.setText("100%");
                     Progressbar.setProgress(step);
-                    Context context2 = getApplicationContext();
-                    CharSequence text = "Hai raggiunto il tuo obbiettivo giornaliero!!";
-                    int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(context2, text, duration);
-                    toast.show();
+                    Snackbar.make(findViewById(android.R.id.content), R.string.goal_message, Snackbar.LENGTH_LONG).show();
                 }
                 saveStep();
             }
@@ -108,23 +106,24 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        main_date = sharedPref.getString("date_pedometer", "");
-        date = sharedPref.getString("date_pedometer_2", "");
-        if(sharedPref.contains("step_pedometer_2") && main_date.equals(date)){
-            step = sharedPref.getInt("step_pedometer_2", 0);
-            time = sharedPref.getInt("time_pedometer_2", 0);
-            distance = sharedPref.getFloat("distance_pedometer_2",0);
-            total_step = sharedPref.getInt("total_daily_step", 9000);
+        main_date = sharedPref.getString(constants.PREFERENCES_DATE, "");
+        date = sharedPref.getString(constants.PREFERENCES_DATE_2, "");
+        if(sharedPref.contains(constants.STEP_PEDOMETER_2) && main_date.equals(date)){
+            step = sharedPref.getInt(constants.STEP_PEDOMETER_2, 0);
+            time = sharedPref.getInt(constants.TIME_PEDOMETER_2, 0);
+            distance = sharedPref.getFloat(constants.PREFERENCES_DATE_2,0);
+            total_step = sharedPref.getInt(constants.TOTAL_DAILY_STEP, 9000);
             Progressbar.setMax(total_step);
             goalStep.setText(total_step + "");
             gpsPedometer_2.setSTEP(step, distance);
             //mSensorValuesTextView.setText(prev_step + "");
         }
         else {
-            editor.putString("date_pedometer_2", main_date);
+            editor.putString(constants.PREFERENCES_DATE_2, main_date);
             editor.apply();
             gpsPedometer_2.setSTEP(0, 0);
-            total_step = sharedPref.getInt("total_daily_step", 9000);
+            total_step = sharedPref.getInt(constants.TOTAL_DAILY_STEP, 9000);
+            Progressbar.setMax(total_step);
             goalStep.setText(total_step + "");
         }
 
@@ -155,8 +154,8 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
     private void saveStep(){
         SharedPreferences sharedPref = getSharedPreferences(constants.PREFERENCES_FILE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("step_pedometer_2", step);
-        editor.putFloat("distance_pedometer_2", distance);
+        editor.putInt(constants.STEP_PEDOMETER_2, step);
+        editor.putFloat(constants.DISTANCE_PEDOMETER_2, distance);
         //editor.putString("date_pedometer", date);
         editor.apply();
     }
@@ -180,12 +179,12 @@ public class gpsPedometer_2_activity extends AppCompatActivity {
                                     x.setImageResource(R.drawable.footprints_white);
                                 time++;
 
-                                if(sharedPref.getString("preferences_time", "").equals("sec"))
+                                if(sharedPref.getString(constants.PREFERENCES_TIME, "").equals(constants.PREFERENCES_SEC))
                                     timeText.setText("" + time + " s");
                                 else
                                     timeText.setText("" + time/60 + " min");
 
-                                editor.putInt("time_pedometer_2", time);
+                                editor.putInt(constants.TIME_PEDOMETER_2, time);
                                 editor.apply();
                             }
                         });

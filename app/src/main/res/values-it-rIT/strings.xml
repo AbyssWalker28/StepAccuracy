@@ -38,4 +38,5 @@
     <string name="info_pedometer3">Pedometro che utilizza i dati dell’accelerometro per valutare il movimento di un passo. I dati dei sensori non vengono salvati volta per volta ed utilizzati ma il calcolo dei passi avviene solamente con ogni nuova tripletta di dati accelerometrici.</string>
     <string name="start_button">Start</string>
     <string name="message_pedometer">Scegli un pedometro</string>
+    <string name="goal_message">Hai raggiunto il tuo obbiettivo giornaliero!!</string>
 </resources>

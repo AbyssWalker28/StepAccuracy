@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.math.BigDecimal;
 
 import it.unimib.stepaccuracy.pedometer.dirPedometer_3;
@@ -68,11 +70,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                         goal = true;
                         viewProgress.setText("100%");
                         Progressbar.setProgress(step);
-                        Context context2 = getApplicationContext();
-                        CharSequence text = "Hai raggiunto il tuo obbiettivo giornaliero!!";
-                        int duration = Toast.LENGTH_LONG;
-                        Toast toast = Toast.makeText(context2, text, duration);
-                        toast.show();
+                        Snackbar.make(findViewById(android.R.id.content), R.string.goal_message, Snackbar.LENGTH_LONG).show();;
                     }
                     saveStep();
                 }
@@ -120,6 +118,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                 editor.apply();
                 dirPedometer_3.setSTEP(0);
                 total_step = sharedPref.getInt("total_daily_step", 9000);
+                Progressbar.setMax(total_step);
                 goalStep.setText(total_step + "");
             }
 
@@ -127,7 +126,7 @@ public class dirPedometer_3_activity extends AppCompatActivity {
                 accuracy = findViewById(R.id.accuracy2);
                 float accuracy_perc = sharedPref.getInt("step_dataset_3", 0);
                 accuracy_perc = (((accuracy_perc * 100) / 500) - 100);
-                accuracy.setText("accuracy: " + (100 - accuracy_perc) + "%");
+                accuracy.setText("" + (100 - accuracy_perc) + "%");
             }
 
             calculate_time();

@@ -31,10 +31,11 @@
     <string name="radiobutton_chilometer">Chilometer(km)</string>
     <string name="radiobutton_meter">Meter(m)</string>
     <string name="button_save">save</string>
-    <string name="info_buttonPlay">Permette l’utilizzo in contemporanea dei 3 algoritmi di step counting implementati.</string>
-    <string name="info_pedometer1">Pedometro che utilizza i dati dell’accelerometro per valutare il movimento di un passo. Utilizza un metodo di raccolta dati a finestra sovrapposta di dimensione 50, che viene popolata man mano che vengono letti dati dai sensori.</string>
-    <string name="info_pedometer2">Pedometro che utilizza i dati del GPS con latitudine e longitudine per calcolare la distanza tra due punti e quindi i relativi passi effettuati. I dati rilevati dai sensori si aggiornano ogniqualvolta viene percorsa una distasa di almeno 10 metri.</string>
-    <string name="info_pedometer3">Pedometro che utilizza i dati dell’accelerometro per valutare il movimento di un passo. I dati dei sensori non vengono salvati volta per volta ed utilizzati ma il calcolo dei passi avviene solamente con ogni nuova tripletta di dati accelerometrici.</string>
+    <string name="info_buttonPlay">It allows the simultaneous use of the three implemented step counting algorithms.</string>
+    <string name="info_pedometer1">Pedometer that uses accelerometer data to evaluate the movement of a step. It uses a superimposed window data collection method of size 50, which is populated as data is read from the sensors.</string>
+    <string name="info_pedometer2">Pedometer that uses GPS data with latitude and longitude to calculate the distance between two points and therefore the relative steps taken. The data detected by the sensors are updated every time a distance of at least 10 meters is covered.</string>
+    <string name="info_pedometer3">Pedometer that uses accelerometer data to evaluate the movement of a step. The sensor data are not saved each time and used but the calculation of the steps takes place only with each new triplet of accelerometric data.</string>
     <string name="start_button">Start</string>
     <string name="message_pedometer">Select an algorithm</string>
+    <string name="goal_message">You\'ve reached your daily goal!!</string>
 </resources>

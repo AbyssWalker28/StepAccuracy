@@ -34,7 +34,7 @@ public class SensorServiceGPS extends Service implements LocationListener {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 8f, this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5f, this);
         startLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
 

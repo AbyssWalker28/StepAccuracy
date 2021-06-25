@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/radiobutton_second"
-            android:textSize="15dp"
+            android:textSize="17dp"
             app:buttonTint="@color/black" />
 
         <RadioButton
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/radiobutton_minute"
-            android:textSize="15dp"
+            android:textSize="17dp"
             app:buttonTint="@color/black" />
     </RadioGroup>
 
@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/radiobutton_chilometer"
-            android:textSize="15dp"
+            android:textSize="17dp"
             app:buttonTint="@color/black" />
 
         <RadioButton
@@ -118,7 +118,7 @@
             android:textColorHint="@color/black"
             android:textColorLink="@color/black"
             android:textCursorDrawable="@color/black"
-            android:textSize="15dp"
+            android:textSize="17dp"
             app:buttonTint="@color/black" />
     </RadioGroup>
 
